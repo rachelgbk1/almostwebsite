@@ -1,0 +1,275 @@
+/* ================================
+   RESET & BASE
+================================ */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: sans-serif;
+  background-color: #F7F5F0;
+  color: #1A1A1A;
+  min-height: 100vh;
+}
+
+/* ================================
+   NAV
+================================ */
+nav {
+  background-color: #F7F5F0;
+  border-bottom: 2px solid #1A1A1A;
+  padding: 0 48px;
+  height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.brand {
+  font-family: 'DM Mono', monospace;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+}
+.brand em { color: #888; font-style: normal; }
+.nav-links {
+  display: flex; gap: 24px;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px; color: #888;
+}
+.nav-links span { cursor: pointer; transition: color .12s; }
+.nav-links span:hover { color: #1A1A1A; }
+
+/* ================================
+   PAGES
+================================ */
+.page { display: none; }
+.page.active { display: block; }
+
+.container {
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 56px 24px 64px;
+}
+.container-wide { max-width: 1100px; }
+
+/* ================================
+   COMMON TYPE
+================================ */
+.eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: #888;
+  letter-spacing: 0.08em;
+  border-left: 2px solid #1A1A1A;
+  padding-left: 10px;
+  margin-bottom: 22px;
+}
+h1 { font-size: 30px; font-weight: 500; margin-bottom: 12px; }
+h2 { font-size: 28px; font-weight: 500; }
+.muted { font-family: 'DM Mono', monospace; font-size: 11px; color: #888; }
+.hint { font-family: 'DM Mono', monospace; font-size: 11px; color: #AAA; }
+
+/* ================================
+   INPUTS
+================================ */
+.underline-input {
+  border: none;
+  border-bottom: 2px solid #1A1A1A;
+  background: transparent;
+  font-size: 26px;
+  font-weight: 500;
+  padding: 4px;
+  width: 100%;
+  outline: none;
+  font-family: sans-serif;
+  margin-bottom: 24px;
+}
+.underline-input::placeholder { color: #CCC; }
+.underline-input.small {
+  width: 60px; text-align: center; margin-bottom: 0;
+}
+.for-row {
+  display: flex; align-items: center; gap: 12px; margin-bottom: 32px;
+}
+.for-text { font-size: 26px; font-weight: 500; }
+.underline-select {
+  border: none;
+  border-bottom: 2px solid #1A1A1A;
+  background: transparent;
+  font-family: 'DM Mono', monospace;
+  font-size: 16px;
+  color: #555;
+  outline: none;
+  cursor: pointer;
+  padding: 4px 0;
+}
+
+/* ================================
+   BUTTONS
+================================ */
+.btn-primary {
+  background: #1A1A1A;
+  color: #F7F5F0;
+  border: none;
+  padding: 13px 32px;
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  cursor: pointer;
+  letter-spacing: 0.04em;
+  transition: background .12s;
+}
+.btn-primary:hover { background: #333; }
+
+.btn-ghost {
+  background: transparent;
+  color: #1A1A1A;
+  border: 1.5px solid #1A1A1A;
+  padding: 11.5px 22px;
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  cursor: pointer;
+  letter-spacing: 0.04em;
+  transition: all .12s;
+}
+.btn-ghost:hover { background: #1A1A1A; color: #F7F5F0; }
+
+.btn-row {
+  display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px;
+}
+.btn-row.center { justify-content: center; }
+
+/* ================================
+   SCREEN 2 — OUTPUT
+================================ */
+.confession {
+  font-size: 22px;
+  font-weight: 500;
+  font-style: italic;
+  color: #555;
+  margin-bottom: 18px;
+  line-height: 1.4;
+}
+.translation {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.55;
+  padding: 22px 24px;
+  background: #fff;
+  border: 2px solid #1A1A1A;
+  margin-bottom: 36px;
+  box-shadow: 6px 6px 0 #1A1A1A;
+}
+.tiny-step-label { margin-top: 8px; }
+.tiny-step {
+  font-family: 'Caveat', cursive;
+  font-size: 28px;
+  background: #FFE873;
+  padding: 18px 22px;
+  border: 1.5px solid #1A1A1A;
+  display: inline-block;
+  transform: rotate(-1deg);
+}
+
+/* ================================
+   SCREEN 3 — TIMER
+================================ */
+.timer-wrap { text-align: center; padding-top: 80px; }
+.timer-step {
+  font-family: 'Caveat', cursive;
+  font-size: 26px;
+  margin-bottom: 28px;
+  color: #555;
+}
+.timer-display {
+  font-family: 'DM Mono', monospace;
+  font-size: 120px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  margin: 20px 0 40px;
+}
+.timer-display.done {
+  color: #C8553D;
+  animation: pulse 1s infinite;
+}
+@keyframes pulse { 50% { opacity: .35; } }
+
+/* ================================
+   HALL OF ALMOST — BOARD
+================================ */
+.hall-top {
+  display: flex; align-items: baseline; justify-content: space-between;
+  margin-bottom: 4px;
+}
+.hall-sub {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px; color: #888;
+  margin-bottom: 36px;
+}
+.board {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 32px 24px;
+  padding: 20px 0 48px;
+  min-height: 240px;
+}
+.note {
+  aspect-ratio: 1 / 1;
+  padding: 22px 18px 18px;
+  font-family: 'Caveat', cursive;
+  font-size: 22px;
+  color: #1A1A1A;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  line-height: 1.25;
+  word-break: break-word;
+  box-shadow: 4px 6px 14px rgba(0,0,0,0.12);
+  transition: transform .15s, box-shadow .15s;
+  position: relative;
+}
+.note::before {
+  content: "------";
+  position: absolute;
+  top: 8px; right: 14px;
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  color: rgba(0,0,0,0.3);
+  letter-spacing: 1px;
+}
+.note:hover {
+  transform: translateY(-4px) rotate(0deg) !important;
+  box-shadow: 6px 10px 20px rgba(0,0,0,0.18);
+}
+.empty-board {
+  grid-column: 1 / -1;
+  text-align: center;
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  color: #888;
+  padding: 60px 20px;
+}
+
+/* ================================
+   MODAL
+================================ */
+.modal-overlay {
+  display: none;
+  position: fixed; inset: 0;
+  background: rgba(26,26,26,0.55);
+  z-index: 100;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+.modal-overlay.open { display: flex; }
+.modal-card {
+  background: #F7F5F0;
+  border: 2px solid #1A1A1A;
+  box-shadow: 8px 8px 0 #1A1A1A;
+  max-width: 560px;
+  width: 100%;
+  padding: 36px 32px;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+.modal-card .btn-ghost { margin-top: 24px; }
