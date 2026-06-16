@@ -1,0 +1,428 @@
+/* ================================
+   RESET & BASE
+================================ */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg: #F7F5F0;
+  --fg: #1A1A1A;
+  --muted: #888;
+  --faint: #CCC;
+  --card: #FFFFFF;
+  --border: #1A1A1A;
+}
+body.theme-dark {
+  --bg: #141414;
+  --fg: #F2EFE8;
+  --muted: #9A9A9A;
+  --faint: #555;
+  --card: #1E1E1E;
+  --border: #F2EFE8;
+}
+body {
+  font-family: sans-serif;
+  background-color: var(--bg);
+  color: var(--fg);
+  transition: background 0.2s, color 0.2s;
+}
+
+/* ================================
+   NAV BAR
+================================ */
+nav {
+  background-color: #F7F5F0;
+  border-bottom: 2px solid #1A1A1A;
+  padding: 0 48px;
+  height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  font-family: 'DM Mono', monospace;
+  font-size: 15px;
+  font-weight: 500;
+  color: #1A1A1A;
+}
+
+.brand em {
+  color: #888;
+  font-style: normal;
+}
+
+.nav-links {
+  display: flex;
+  gap: 24px;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: #888;
+}
+
+.nav-links span {
+  cursor: pointer;
+  transition: color 0.12s;
+}
+
+.nav-links span:hover {
+  color: #1A1A1A;
+}
+
+/* ================================
+   PAGE SHOW / HIDE
+================================ */
+.page {
+  display: none;
+}
+
+.page.active {
+  display: block;
+}
+
+/* ================================
+   CONTAINER
+================================ */
+.container {
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 56px 24px 64px;
+}
+
+/* ================================
+   SCREEN 1 — HOME
+================================ */
+.eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: #888;
+  letter-spacing: 0.08em;
+  border-left: 2px solid #1A1A1A;
+  padding-left: 10px;
+  margin-bottom: 22px;
+}
+
+h1 {
+  font-size: 30px;
+  font-weight: 500;
+  color: #1A1A1A;
+  margin-bottom: 12px;
+}
+
+.underline-input {
+  border: none;
+  border-bottom: 2px solid #1A1A1A;
+  background: transparent;
+  font-size: 26px;
+  font-weight: 500;
+  color: #1A1A1A;
+  padding: 4px 4px;
+  width: 100%;
+  outline: none;
+  font-family: sans-serif;
+  margin-bottom: 24px;
+}
+
+.underline-input::placeholder {
+  color: #CCC;
+}
+
+.underline-input.small {
+  width: 52px;
+  text-align: center;
+  margin-bottom: 0;
+}
+
+.for-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+
+.for-text {
+  font-size: 26px;
+  font-weight: 500;
+  color: #1A1A1A;
+}
+
+.underline-select {
+  border: none;
+  border-bottom: 2px solid #1A1A1A;
+  background: transparent;
+  font-family: 'DM Mono', monospace;
+  font-size: 16px;
+  color: #555;
+  outline: none;
+  cursor: pointer;
+  padding: 4px 0;
+}
+
+.btn-primary {
+  background: #1A1A1A;
+  color: #F7F5F0;
+  border: none;
+  padding: 13px 32px;
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  cursor: pointer;
+  letter-spacing: 0.04em;
+  transition: background 0.12s;
+  margin-bottom: 16px;
+  display: block;
+}
+
+.btn-primary:hover {
+  background: #333;
+}
+
+.hint {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: #AAA;
+}
+
+/* ================================
+   HALL OF ALMOST — STICKY NOTES
+================================ */
+.board {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.sticky {
+  padding: 14px 12px 18px;
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.15s;
+  border-bottom: 3px solid rgba(0, 0, 0, 0.1);
+}
+
+.sticky:hover {
+  transform: scale(1.05) !important;
+}
+
+.s-pin {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.15);
+  position: absolute;
+  top: 9px;
+  right: 10px;
+}
+
+.s-no {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  color: rgba(0, 0, 0, 0.3);
+  margin-bottom: 8px;
+}
+
+.s-thing {
+  font-size: 12px;
+  font-weight: 500;
+  color: #1A1A1A;
+  line-height: 1.4;
+  margin-bottom: 8px;
+}
+
+.s-time {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  color: rgba(0, 0, 0, 0.38);
+}
+/* ================================
+   SLAM-IN ANIMATION FOR STICKY NOTES
+================================ */
+@keyframes slam-in {
+  0%   { transform: scale(3) rotate(var(--rot, 0deg)); opacity: 0; }
+  60%  { transform: scale(0.92) rotate(var(--rot, 0deg)); opacity: 1; }
+  80%  { transform: scale(1.06) rotate(var(--rot, 0deg)); }
+  100% { transform: scale(1) rotate(var(--rot, 0deg)); }
+}
+
+@keyframes board-shake {
+  0%, 100% { transform: translate(0, 0); }
+  25%      { transform: translate(-3px, 2px); }
+  50%      { transform: translate(3px, -1px); }
+  75%      { transform: translate(-2px, -2px); }
+}
+
+.sticky.slam {
+  animation: slam-in 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.board.shake {
+  animation: board-shake 0.25s ease-out;
+}
+
+/* ================================
+   TIMER SCREEN
+================================ */
+.timer-container { text-align: center; }
+
+.timer-title {
+  font-size: 28px;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.timer-sub {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: #888;
+  margin-bottom: 40px;
+}
+
+.timer-display {
+  font-family: 'DM Mono', monospace;
+  font-size: 120px;
+  font-weight: 500;
+  color: #1A1A1A;
+  letter-spacing: -0.02em;
+  margin: 24px 0 40px;
+  line-height: 1;
+}
+
+.timer-display.running { color: #1A1A1A; }
+.timer-display.done {
+  color: #C0392B;
+  animation: pulse-done 1s ease-in-out infinite;
+}
+
+@keyframes pulse-done {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.5; }
+}
+
+.timer-buttons {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.timer-buttons .btn-primary { margin-bottom: 0; }
+
+.btn-ghost {
+  background: transparent;
+  color: #1A1A1A;
+  border: 2px solid #1A1A1A;
+  padding: 11px 32px;
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  cursor: pointer;
+  letter-spacing: 0.04em;
+  transition: background 0.12s, color 0.12s;
+}
+.btn-ghost:hover { background: #1A1A1A; color: #F7F5F0; }
+
+/* graveyard / completed states */
+.sticky.dead {
+  filter: grayscale(1);
+  opacity: 0.75;
+}
+.sticky.done { opacity: 0.6; }
+.s-done {
+  margin-top: 8px;
+  background: #1A1A1A;
+  color: #F7F5F0;
+  border: none;
+  padding: 5px 10px;
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  cursor: pointer;
+}
+.s-done:hover { background: #333; }
+.hall-top { display: flex; align-items: baseline; gap: 12px; margin-bottom: 4px; }
+.hall-top h2 { font-size: 24px; font-weight: 500; }
+.muted { font-family: 'DM Mono', monospace; font-size: 11px; color: #888; }
+.hall-sub { font-family: 'DM Mono', monospace; font-size: 11px; color: #888; margin-bottom: 24px; }
+#nav-me { color: #1A1A1A; font-weight: 500; }
+
+.board-heading {
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  font-weight: 500;
+  color: #1A1A1A;
+  text-transform: lowercase;
+  letter-spacing: 0.06em;
+  margin: 20px 0 12px;
+  border-left: 2px solid #1A1A1A;
+  padding-left: 10px;
+}
+
+/* AUTH */
+.auth-container { max-width: 480px; }
+.auth-buttons { display: flex; gap: 12px; margin: 24px 0 16px; }
+.auth-buttons .btn-primary { margin-bottom: 0; }
+.sticky.done { opacity: 1; }
+
+/* SETTINGS */
+.nav-dots {
+  font-size: 20px;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 0 6px;
+  color: var(--fg);
+}
+.settings-menu {
+  display: none;
+  position: absolute;
+  top: 58px;
+  right: 24px;
+  background: var(--bg);
+  border: 2px solid var(--border);
+  padding: 16px;
+  width: 280px;
+  z-index: 100;
+  font-family: 'DM Mono', monospace;
+}
+.settings-menu.open { display: block; }
+.settings-section { display: flex; flex-direction: column; gap: 8px; }
+.settings-row { display: flex; justify-content: space-between; align-items: center; }
+.settings-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 0.06em;
+}
+.settings-hr { border: none; border-top: 1px dashed var(--faint); margin: 12px 0; }
+.set-input {
+  border: none;
+  border-bottom: 1px solid var(--border);
+  background: transparent;
+  color: var(--fg);
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  padding: 4px 2px;
+  outline: none;
+}
+.btn-small { padding: 6px 14px; font-size: 10px; }
+
+/* THEME OVERRIDES — map hardcoded values to vars where they appear in dark */
+body.theme-dark nav { background-color: var(--bg); border-bottom-color: var(--border); }
+body.theme-dark .brand,
+body.theme-dark h1,
+body.theme-dark .for-text,
+body.theme-dark .underline-input,
+body.theme-dark .timer-title,
+body.theme-dark .timer-display,
+body.theme-dark .hall-top h2,
+body.theme-dark .board-heading,
+body.theme-dark #nav-me { color: var(--fg); }
+body.theme-dark .underline-input,
+body.theme-dark .underline-select { border-bottom-color: var(--border); color: var(--fg); }
+body.theme-dark .eyebrow,
+body.theme-dark .board-heading { border-left-color: var(--border); }
+body.theme-dark .btn-primary { background: var(--fg); color: var(--bg); }
+body.theme-dark .btn-primary:hover { background: var(--muted); }
+body.theme-dark .btn-ghost { color: var(--fg); border-color: var(--border); }
+body.theme-dark .btn-ghost:hover { background: var(--fg); color: var(--bg); }
+body.theme-dark .s-done { background: var(--fg); color: var(--bg); }
